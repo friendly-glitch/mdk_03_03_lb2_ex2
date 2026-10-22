@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный материал: Виды и методы тестирования</title>
+    <!-- Подключение внешнего файла стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Виды и методы тестирования ПО</h1>
+        <p>Интерактивный учебный материал (включая автоматизацию)</p>
+    </header>
+
+    <!-- Вкладки -->
+    <div class="tabs">
+        <!-- Обратите внимание на добавленный параметр event в onclick -->
+        <button class="tab-btn active" onclick="openTab('types', event)">Виды</button>
+        <button class="tab-btn" onclick="openTab('levels', event)">Уровни</button>
+        <button class="tab-btn" onclick="openTab('methods', event)">Методы</button>
+        <button class="tab-btn" onclick="openTab('design', event)">Тест-дизайн</button>
+        <button class="tab-btn" onclick="openTab('auto', event)">Автоматизация</button>
+    </div>
+
+    <!-- Контент вкладок -->
+    <div class="content-area">
+        
+        <!-- Виды тестирования -->
+        <div id="types" class="tab-content active">
+            <div class="card">
+                <h3>Функциональное</h3>
+                <p>Проверка того, ЧТО делает система. Соответствие требованиям, работа кнопок и бизнес-логики. Включает позитивные и негативные сценарии.</p>
+            </div>
+            <div class="card">
+                <h3>Нефункциональное</h3>
+                <p>Проверка того, КАК система это делает. Оценка производительности, безопасности, удобства (UX) и надежности.</p>
+            </div>
+            <div class="card">
+                <h3>Статическое</h3>
+                <p>Анализ кода и документации <b>без запуска</b> программы (Code Review, чтение ТЗ).</p>
+            </div>
+            <div class="card">
+                <h3>Динамическое</h3>
+                <p>Тестирование <b>работающей</b> программы с выполнением кода (клики, ввод данных).</p>
+            </div>
+        </div>
+
+        <!-- Уровни -->
+        <div id="levels" class="tab-content">
+            <div class="card">
+                <h3>Модульное (Unit)</h3>
+                <p>Проверка отдельных функций или классов кода в изоляции. Обычно пишется разработчиками.</p>
+            </div>
+            <div class="card">
+                <h3>Интеграционное</h3>
+                <p>Проверка взаимодействия между модулями (например, как модуль оплаты связан с корзиной).</p>
+            </div>
+            <div class="card">
+                <h3>Системное</h3>
+                <p>Комплексное тестирование всей системы на соответствие требованиям (сквозные сценарии).</p>
+            </div>
+            <div class="card">
+                <h3>Приёмочное (UAT)</h3>
+                <p>Проверка системы на соответствие ожиданиям заказчика и бизнес-процессам.</p>
+            </div>
+        </div>
+
+        <!-- Методы -->
+        <div id="methods" class="tab-content">
+            <div class="card">
+                <h3>Черный ящик</h3>
+                <p>Без знания внутренней структуры кода. Смотрим только на входные данные и результат.</p>
+            </div>
+            <div class="card">
+                <h3>Белый ящик</h3>
+                <p>С полным доступом к коду. Проверяются все ветвления (if/else) и циклы.</p>
+            </div>
+            <div class="card">
+                <h3>Серый ящик</h3>
+                <p>Частичный доступ к внутренностям (например, знание структуры БД или API), но не всего кода.</p>
+            </div>
+        </div>
+
+        <!-- Тест-дизайн -->
+        <div id="design" class="tab-content">
+            <div class="card">
+                <h3>Классы эквивалентности</h3>
+                <p>Разделение данных на группы с одинаковым поведением. (Например: пароль 1-5 символов - ошибка, 6-12 - успех, 13+ - ошибка).</p>
+            </div>
+            <div class="card">
+                <h3>Анализ граничных значений</h3>
+                <p>Проверка на границах диапазонов (для пароля 6-12: тестируем ровно 5, 6, 12 и 13 символов).</p>
+            </div>
+            <div class="card">
+                <h3>Таблицы принятия решений</h3>
+                <p>Описание сложной логики в виде таблиц для покрытия всех вариантов (Если VIP и сумма > 1000, то скидка 20%).</p>
+            </div>
+        </div>
+
+        <!-- Автоматизация -->
+        <div id="auto" class="tab-content">
+            <div class="card">
+                <h3>Цель автоматизации</h3>
+                <p>Использование скриптов для тестов без участия человека. Повышает скорость, точность и повторяемость.</p>
+            </div>
+            <div class="card">
+                <h3>Что автоматизируют?</h3>
+                <p>Регрессионные тесты (при каждом коммите), нагрузочные тесты, проверку UI и API.</p>
+            </div>
+            <div class="card">
+                <h3>Инструменты</h3>
+                <p>UI: Selenium, Playwright.<br>API: Postman.<br>Unit: JUnit, PyTest.<br>Нагрузка: Apache JMeter.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Интерактивный мини-тест -->
+    <div class="quiz-section">
+        <h2>Проверь себя (Мини-тест)</h2>
+        
+        <div class="question" id="q1">
+            <p>1. Какой метод тестирования предполагает наличие доступа к исходному коду?</p>
+            <div class="answers">
+                <button class="answer-btn" onclick="checkAnswer(this, false, 'q1')">Черный ящик</button>
+                <button class="answer-btn" onclick="checkAnswer(this, true, 'q1')">Белый ящик</button>
+                <button class="answer-btn" onclick="checkAnswer(this, false, 'q1')">Серый ящик</button>
+            </div>
+            <div class="feedback" id="fb-q1"></div>
+        </div>
+
+        <div class="question" id="q2">
+            <p>2. Какое тестирование проверяет, что новая фича не сломала старый функционал?</p>
+            <div class="answers">
+                <button class="answer-btn" onclick="checkAnswer(this, false, 'q2')">Смоук-тестирование</button>
+                <button class="answer-btn" onclick="checkAnswer(this, false, 'q2')">Приемочное тестирование</button>
+                <button class="answer-btn" onclick="checkAnswer(this, true, 'q2')">Регрессионное тестирование</button>
+            </div>
+            <div class="feedback" id="fb-q2"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Подключение внешнего файла скриптов -->
+<script src="script.js"></script>
+</body>
+</html>
